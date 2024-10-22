@@ -47,6 +47,36 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs(
+                "src/main/assets",
+                "../web/dist"
+            )
+        }
+    }
+
+}
+
+// Define the copy task
+tasks.register<Copy>("copyWebApp") {
+    from("../web/dist")
+    into("src/main/assets/dist")
+}
+
+// Make the copy task run before build
+tasks.named("preBuild") {
+    dependsOn("copyWebApp")
+}
+
+// Optional: Add a clean task for the web assets
+tasks.register("cleanWebAssets", Delete::class) {
+    delete("src/main/assets/dist")
+}
+
+// Optional: Make the clean task depend on cleanWebAssets
+tasks.named("clean") {
+    dependsOn("cleanWebAssets")
 }
 
 dependencies {
