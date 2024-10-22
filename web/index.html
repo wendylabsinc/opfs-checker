@@ -41,6 +41,12 @@
           </tr>
           <tr>
             <td class="border border-gray-300 px-4 py-2 font-semibold">
+              Current Disk Usage
+            </td>
+            <td class="border border-gray-300 px-4 py-2" id="disk-usage"></td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2 font-semibold">
               Estimated Maximum Disk Size
             </td>
             <td
@@ -48,16 +54,48 @@
               id="estimated-maximum-disk-size"
             ></td>
           </tr>
+          <tr></tr>
+            <td class="border border-gray-300 px-4 py-2 font-semibold">
+              Percent Used
+            </td>
+            <td
+              class="border border-gray-300 px-4 py-2"
+              id="percent-used"
+            ></td>
+          </tr>
         </tbody>
       </table>
       <ul>
         <li>
           To check if OPFS is supported, run the following command in the
-          console: <br /><code class="bg-gray-100 m-4 rounded-md"> </code>
+          console: <br /><code class="bg-gray-100 m-4 rounded-md p-2 block whitespace-pre-wrap">if (navigator.storage && navigator.storage.getDirectory) {
+    console.log("OPFS is supported in this browser.");
+} else {
+    console.log("OPFS is not supported in this browser.");
+}</code>
         </li>
         <li>
           To get the estimated maximum disk size, run the following command in
-          the console: <code>getEstimatedMaximumDiskSize()</code>
+          the console: <br /><code class="bg-gray-100 m-4 rounded-md p-2 block whitespace-pre-wrap">async function getEstimatedQuota() {
+  const estimate = await navigator.storage.estimate();
+  const quota = estimate.quota;
+  console.log('Estimated quota:', quota);
+  return quota;
+}
+
+getEstimatedQuota();</code>
+        </li>
+        <li>
+          To get the disk usage: <br /><code
+            class="bg-gray-100 m-4 rounded-md p-2 block whitespace-pre-wrap"
+            >async function getDiskUsage() {
+  const estimate = await navigator.storage.estimate();
+  console.log('Estimated usage:', estimate.usage);
+  return estimate.usage;
+}
+
+getDiskUsage();</code
+          >
         </li>
       </ul>
     </div>
