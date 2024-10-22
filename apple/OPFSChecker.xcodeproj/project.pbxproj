@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5031DE142CC83C9C00C03240 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 5031DE132CC83C9C00C03240 /* dist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		5031DE132CC83C9C00C03240 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dist; path = ../web/dist; sourceTree = "<group>"; };
 		50E3D1762CC80CE600D73835 /* OPFSChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPFSChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		50E3D16D2CC80CE600D73835 = {
 			isa = PBXGroup;
 			children = (
+				5031DE132CC83C9C00C03240 /* dist */,
 				50E3D1782CC80CE600D73835 /* OPFSChecker */,
 				50E3D1772CC80CE600D73835 /* Products */,
 			);
@@ -54,6 +60,7 @@
 			buildPhases = (
 				50E3D1722CC80CE600D73835 /* Sources */,
 				50E3D1732CC80CE600D73835 /* Frameworks */,
+				5031DE122CC836ED00C03240 /* Install and Build */,
 				50E3D1742CC80CE600D73835 /* Resources */,
 			);
 			buildRules = (
@@ -109,10 +116,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5031DE142CC83C9C00C03240 /* dist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5031DE122CC836ED00C03240 /* Install and Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Install and Build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsource ~/.zshrc;\nexport PATH=$PATH:/usr/local/bin;\nnpm -v;\ncd $PROJECT_DIR/../web;\nnpm install;\nnpm run build\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50E3D1722CC80CE600D73835 /* Sources */ = {
