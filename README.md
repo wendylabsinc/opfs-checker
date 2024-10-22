@@ -1,5 +1,7 @@
 # Origin Private File System Checker 
 
+Want to check on your current browser? [Click here](https://wendylabsinc.github.io/opfs-checker/)
+
 This repo is a simple tool to check if an iOS, macOS, or Android app that has an embedded web view:
 
 - Can support the Origin Private File System APIs 
